@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dairy Delight - Premium Dairy Experience</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&display=swap">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/three@0.149.0/build/three.min.js" as="script">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js" as="script">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+       
+</head>
+
+<body>
+    <div class="loader" id="loader">
+        <svg width="60" height="60" viewBox="0 0 50 50">
+            <circle cx="25" cy="25" r="20" stroke="#2c6e49" stroke-width="5" fill="none"
+                stroke-dasharray="31.415, 31.415" transform="rotate(-90 25 25)">
+                <animateTransform attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="1s"
+                    repeatCount="indefinite" />
+            </circle>
+        </svg>
+    </div>
+
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo" id="logo-3d">Dairy Delight</div>
+            <div class="menu-toggle">☰</div>
+            <ul class="nav-links">
+                <li class="nav-item"><a href="#home">Home</a></li>
+                <li class="nav-item">
+                    <a href="#products">Products</a>
+                    <ul class="dropdown">
+                        <li><a href="#milk">Milk</a></li>
+                        <li><a href="#cheese">Cheese</a></li>
+                        <li><a href="#yogurt">Yogurt</a></li>
+                        <li><a href="#others">Others</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a href="#sustainability">Sustainability</a></li>
+                <li class="nav-item"><a href="#contact-us">Contact Us</a></li>
+                <li class="nav-item"><a href="#" id="admin-link">Admin</a></li>
+            </ul>
+            <div class="cart-container">
+                <span class="cart-icon">🛒</span>
+                <span class="cart-count" id="cart-count">0</span>
+            </div>
+            <button class="theme-toggle" id="theme-toggle">🌙</button>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="home-carousel" id="carousel">
+            <div class="carousel-bg"
+                style="background-image: url('https://www.shutterstock.com/image-photo/black-white-cows-grassy-field-600nw-2165021083.jpg')">
+            </div>
+            <div class="carousel-bg"
+                style="background-image: url('https://giramondopublishing.com/wp-content/uploads/2022/10/ma-17176-scaled.jpg')">
+            </div>
+            <div class="carousel-bg"
+                style="background-image: url('https://img.freepik.com/premium-photo/close-up-spoon-casserole-bowl-natural-yogurt-wooden-table_908985-99180.jpg')">
+            </div>
+            <div class="carousel-item active">
+                <h1>Fresh Dairy Milk</h1>
+                <p>Direct farm-to-table delivery</p>
+                <button class="cta-button order-now">Order Now</button>
+            </div>
+            <div class="carousel-item">
+                <h1>Artisan Cheese</h1>
+                <p>Handcrafted perfection</p>
+                <button class="cta-button order-now">Order Now</button>
+            </div>
+            <div class="carousel-item">
+                <h1>Creamy Yogurt</h1>
+                <p>Probiotic-rich delight</p>
+                <button class="cta-button order-now">Order Now</button>
+            </div>
+        </div>
+    </section>
+
+    <div class="login-modal" id="login-modal">
+        <div class="login-content">
+            <button class="close-modal" id="close-login">×</button>
+            <div class="tabs">
+                <div class="tab active" data-tab="login">Login</div>
+                <div class="tab" data-tab="signup">Sign Up</div>
+            </div>
+            <form class="login-form active" id="login-form">
+                <div class="form-group">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" name="email" required placeholder="Your Email">
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" name="password" required placeholder="Your Password">
+                </div>
+                <button type="submit">Login</button>
+            </form>
+            <form class="signup-form" id="signup-form">
+                <div class="form-group">
+                    <label for="signup-name">Name</label>
+                    <input type="text" id="signup-name" name="name" required placeholder="Your Name">
+                </div>
+                <div class="form-group">
+                    <label for="signup-email">Email</label>
+                    <input type="email" id="signup-email" name="email" required placeholder="Your Email">
+                </div>
+                <div class="form-group">
+                    <label for="signup-password">Password</label>
+                    <input type="password" id="signup-password" name="password" required placeholder="Your Password">
+                </div>
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+    </div>
+
+    <section class="stats" id="stats">
+        <div class="stat-item">
+            <h3><span class="counter" data-target="5000">0</span></h3>
+            <p>Happy Customers</p>
+        </div>
+        <div class="stat-item">
+            <h3><span class="counter" data-target="10000">0</span></h3>
+            <p>Products Sold</p>
+        </div>
+        <div class="stat-item">
+            <h3><span class="counter" data-target="50">0</span></h3>
+            <p>Farms Partnered</p>
+        </div>
+    </section>
+
+    <section class="sustainability" id="sustainability">
+        <h2>Our Sustainability Promise</h2>
+        <div class="sustain-grid">
+            <div class="sustain-item">
+                <svg viewBox="0 0 24 24">
+                    <path
+                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />
+                </svg>
+                <h3>Eco-Friendly</h3>
+                <p>100% recyclable packaging</p>
+            </div>
+            <div class="sustain-item">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 3v18M9 6h6M9 12h6M9 18h6" />
+                </svg>
+                <h3>Organic Farms</h3>
+                <p>Partnered with sustainable farms</p>
+            </div>
+            <div class="sustain-item">
+                <svg viewBox="0 0 24 24">
+                    <path
+                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                </svg>
+                <h3>Carbon Neutral</h3>
+                <p>Offsetting our footprint</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="products" id="products">
+        <h2>Our Premium Collection</h2>
+        <div class="product-grid" id="product-grid"></div>
+    </section>
+
+    <section class="contact-us" id="contact-us">
+        <h2>Get in Touch</h2>
+        <form class="contact-form">
+            <div class="form-group">
+                <label for="contact-name">Name</label>
+                <input type="text" id="contact-name" name="name" required placeholder="Your Name">
+            </div>
+            <div class="form-group">
+                <label for="contact-email">Email</label>
+                <input type="email" id="contact-email" name="email" required placeholder="Your Email">
+            </div>
+            <div class="form-group">
+                <label for="contact-message">Message</label>
+                <textarea id="contact-message" name="message" required placeholder="Your Message"></textarea>
+            </div>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-waves">
+            <div class="wave wave1"></div>
+            <div class="wave wave2"></div>
+            <div class="wave wave3"></div>
+        </div>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Dairy Delight</h3>
+                <p>Bringing you the freshest dairy products since 2025.</p>
+                <div class="footer-social-links">
+                    <a href="#" class="social-icon facebook" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-icon twitter" aria-label="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-icon instagram" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-icon whatsapp" aria-label="WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="#home">Home</a>
+                <a href="#products">Products</a>
+                <a href="#sustainability">Sustainability</a>
+                <a href="#contact-us">Contact Us</a>
+                <a href="#" id="admin-footer-link">Admin Panel</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p><i class="fas fa-envelope"></i> info@dairydelight.com</p>
+                <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Dairy Lane, Mumbai</p>
+            </div>
+            <div class="footer-section">
+                <h3>Newsletter</h3>
+                <form class="footer-newsletter">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+                <div class="payment-methods">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-google-pay"></i>
+                    <i class="fab fa-apple-pay"></i>
+                </div>
+            </div>
+            <div class="footer-section footer-features">
+                <h3>Features</h3>
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <i class="fas fa-truck"></i>
+                        <span>Free Delivery</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-undo"></i>
+                        <span>Easy Returns</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-clock"></i>
+                        <span>24/7 Support</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Secure Payment</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-animation">
+                <div class="milk-pour"></div>
+            </div>
+            <p>© 2025 Dairy Delight. All Rights Reserved.</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms & Conditions</a>
+                <a href="#">Refund Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <div class="cart-modal" id="cart-modal">
+        <h2>Your Cart</h2>
+        <div class="cart-items" id="cart-items"></div>
+        <div class="cart-total">
+            <strong>Total: ₹<span id="cart-total">0</span></strong>
+        </div>
+        <button class="checkout-btn" id="checkout-btn">Checkout</button>
+        <button class="back-to-home-btn" id="back-to-home">Back to Home</button>
+    </div>
+
+    <div class="payment-modal" id="payment-modal">
+        <div class="payment-content">
+            <button class="close-modal" id="close-payment">×</button>
+            <div class="payment-header">
+                <h2>Complete Your Payment</h2>
+                <div class="payment-amount">
+                    <span>Total Amount:</span>
+                    <span class="amount">₹<span id="payment-total">0</span></span>
+                </div>
+            </div>
+            <div class="payment-progress">
+                <div class="progress-step active" data-step="1">
+                    <div class="step-number">1</div>
+                    <span>Method</span>
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step" data-step="2">
+                    <div class="step-number">2</div>
+                    <span>Details</span>
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step" data-step="3">
+                    <div class="step-number">3</div>
+                    <span>Confirm</span>
+                </div>
+            </div>
+            <div class="payment-methods" id="payment-methods">
+                <div class="payment-method" data-method="credit-card">
+                    <i class="fas fa-credit-card payment-method-icon"></i>
+                    <h3>Credit Card</h3>
+                    <p>Pay securely with your credit card</p>
+                    <div class="payment-details" id="credit-card-details">
+                        <div class="form-group">
+                            <label for="card-number">Card Number</label>
+                            <input type="text" id="card-number" placeholder="1234 5678 9012 3456" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="expiry">Expiry Date</label>
+                            <input type="text" id="expiry" placeholder="MM/YY" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cvv">CVV</label>
+                            <input type="text" id="cvv" placeholder="123" required>
+                        </div>
+                        <button class="pay-btn" data-method="credit-card">Pay Now</button>
+                        <button class="back-btn">Back</button>
+                    </div>
+                </div>
+                <div class="payment-method" data-method="paypal">
+                    <h3>PayPal</h3>
+                    <p>Pay with your PayPal account</p>
+                    <div class="payment-details" id="paypal-details">
+                        <p>Redirecting to PayPal...</p>
+                        <button class="pay-btn" data-method="paypal">Proceed with PayPal</button>
+                        <button class="back-btn">Back</button>
+                    </div>
+                </div>
+                <div class="payment-method" data-method="upi">
+                    <h3>UPI</h3>
+                    <p>Pay using your UPI ID</p>
+                    <div class="payment-details" id="upi-details">
+                        <div class="form-group">
+                            <label for="upi-id">UPI ID</label>
+                            <input type="text" id="upi-id" placeholder="example@upi" required>
+                        </div>
+                        <button class="pay-btn" data-method="upi">Pay Now</button>
+                        <button class="back-btn">Back</button>
+                    </div>
+                </div>
+                <div class="payment-method" data-method="cod">
+                    <h3>Cash on Delivery</h3>
+                    <p>Pay when your order is delivered</p>
+                    <div class="payment-details" id="cod-details">
+                        <p>Confirm your order for Cash on Delivery</p>
+                        <button class="pay-btn" data-method="cod">Confirm Order</button>
+                        <button class="back-btn">Back</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="admin-modal" id="admin-modal">
+        <div class="admin-auth" id="admin-auth">
+            <div class="admin-auth-content">
+                <div class="admin-auth-header">
+                    <h2>Admin Dashboard</h2>
+                    <div class="admin-auth-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                </div>
+                <div class="admin-auth-3d"></div>
+                <div class="form-group admin-input-group">
+                    <i class="fas fa-lock input-icon"></i>
+                    <input type="password" id="admin-password" placeholder="Enter admin password" class="admin-input">
+                    <div class="password-strength"></div>
+                </div>
+                <button id="admin-auth-submit" class="ripple-button">
+                    <span>Login</span>
+                    <div class="ripple"></div>
+                </button>
+                <p class="admin-auth-error"></p>
+            </div>
+        </div>
+        <div class="admin-content">
+            <button class="close-modal" id="close-admin">×</button>
+            <h2>Admin Panel</h2>
+            <div class="admin-tabs">
+                <div class="admin-tab active" data-tab="products">Products</div>
+                <div class="admin-tab" data-tab="orders">Orders</div>
+                <div class="admin-tab" data-tab="analytics">Analytics</div>
+            </div>
+            <div class="admin-section active" id="admin-products">
+                <form class="admin-form" id="add-product-form">
+                    <div class="form-group">
+                        <label for="product-name">Product Name</label>
+                        <input type="text" id="product-name" name="name" required placeholder="Enter product name">
+                    </div>
+                    <div class="form-group">
+                        <label for="product-price">Price ($)</label>
+                        <input type="number" id="product-price" name="price" step="0.01" required
+                            placeholder="Enter price">
+                    </div>
+                    <div class="form-group">
+                        <label for="product-image">Image URL</label>
+                        <input type="url" id="product-image" name="image" required placeholder="Enter image URL">
+                    </div>
+                    <button type="submit">Add Product</button>
+                </form>
+                <div class="admin-product-list" id="product-list"></div>
+            </div>
+            <div class="admin-section" id="admin-orders">
+                <div class="admin-order-list" id="order-list"></div>
+            </div>
+            <div class="admin-section" id="admin-analytics">
+                <div id="analytics-3d"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/three@0.149.0/build/three.min.js"></scrip
+    t><script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="index.js">
+    </script>
+</body>
+
+</html>
